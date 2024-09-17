@@ -1,0 +1,284 @@
+@charset "UTF-8";
+/* CSS Document */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+	font-family: "TN Oswald Header";
+	src: url('fonts/oswald/Oswald-Bold.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "TN Oswald Body";
+	src: url('fonts/oswald/Oswald-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body, html {
+    height: 100%;
+    font-family: "TN Oswald Body", sans-serif;
+    overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+header .container h1 {
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.header-button {
+    color: black;
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16pt;
+    font-family: "TN Oswald Header", sans-serif;
+    cursor: pointer;
+    margin: 0 20px;
+    transition: color 0.3s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.header-button:hover {
+    color: #D71920;
+    transform: scale(1.15);
+}
+
+.block-button {
+    color: white;
+    background: none;
+    border: solid;
+    border-color: white;
+    padding: 10px 20px;
+    font-size: 16pt;
+    font-family: "TN Oswald Header", sans-serif;
+    cursor: pointer;
+    margin: 0 20px;
+    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.block-button:hover {
+    color: #D71920;
+    border-color: #D71920;
+    transform: scale(1.15);
+}
+
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	background-color: white;
+	padding: 10px;
+	text-align: center;
+	transition: top 0.3s ease;
+	z-index: 1000;
+	font-size: 25pt;
+    font-family: "TN Oswald Header", sans-serif;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+video {
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*
+#background-video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+}
+*/
+
+#background-video {
+    width: 100%;
+    height: calc(100% + 200px); /* Increase height by 200px to crop from top and bottom */
+    object-fit: cover; /* Ensures the video covers the container */
+    margin-top: -100px; /* Crop 100px from the top */
+    margin-bottom: -100px; /* Crop 100px from the bottom */
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 200vh; /* To ensure there's enough scrollable space */
+    padding-top: 400px; /* Adjust this value to start lower on the screen */
+}
+
+.text-block {
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    margin: 50px 0;
+    border-radius: 10px;
+    font-size: 24px;
+    width: 80%;
+    text-align: center;
+}
+
+.content .text-block {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    transform: translateY(525px);
+    transition: transform 0.7s ease-in-out;
+}
+
+body.loaded .content .text-block {
+    transform: translateY(0);
+}
+
+.h1 {
+	color: white;
+	font-family: "TN Oswald Header", sans-serif;
+}
+
+.h2 {
+	color: white;
+	font-family: "TN Oswald Body", sans-serif;
+}
+
+.h3 {
+	color: white;
+	font-family: "TN Oswald Header", sans-serif;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#form-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: translate(-50%, -50%);
+    border-color: white;
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 10px;
+    border-style: solid;
+    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    color: white;
+}
+
+#form-modal h1 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#form-modal form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+/* #form-modal input {
+    width: 100%;
+    padding: 8px;
+} */
+
+
+#form-modal input, 
+#form-modal textarea {
+    margin: 5px 0; /* Reduce space between input boxes */
+    background-color: rgba(255, 255, 255, 0.2); /* Light transparent background for input fields */
+    border: 1px solid white; /* White border for form fields */
+    padding: 8px;
+    color: white;
+    font-family: "TN Oswald Body", sans-serif;
+}
+
+#form-modal label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#form-modal button {
+    /* padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    background: none; */
+    
+    color: white;
+    background: none;
+    border: solid;
+    border-color: white;
+    padding: 10px;
+    font-family: "TN Oswald Header", sans-serif;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, transform 0.5s ease-in-out;
+}
+
+#form-modal button:hover {
+    color: #D71920;
+    border-color: #D71920;
+    transform: scale(1.07);
+}
+
+#form-modal .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#form-modal .button-group button {
+    flex: 1;
+    margin: 0 5px;
+}
